@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
+import './actions/drinksActions';
+import { ADD_DRINK, addDrink, REMOVE_DRINK, removeDrink, EMPTY_DRINKS, emptyDrinks } from './actions/drinksActions';
 
 const initialState = {
   drinks: [],
@@ -16,19 +18,19 @@ function remove(array, element) {
 
 function reducer(state = initialState, action) {
   switch(action.type) {
-    case 'ADD_DRINK':
+    case ADD_DRINK:
       return { ...state, drinks: [...state.drinks, action.payload] };
     case 'ADD_CHIPS':
       return { ...state, chips: [...state.chips, action.payload] };
     case 'ADD_SANDWICH':
       return { ...state, sandwiches: [...state.sandwiches, action.payload] };
-    case 'REMOVE_DRINK':
+    case REMOVE_DRINK:
       return { ...state, drinks: remove(state.drinks, action.payload) };
     case 'REMOVE_CHIPS':
       return { ...state, chips: remove(state.chips, action.payload) };
     case 'REMOVE_SANDWICH':
       return { ...state, sandwiches: remove(state.sandwiches, action.payload) };
-    case 'EMPTY_DRINKS': 
+    case EMPTY_DRINKS: 
       return { ...state, drinks: [] };
     case 'EMPTY_CHIPS': 
       return { ...state, chips: [] };
@@ -47,20 +49,11 @@ store.subscribe(() => {
   console.log('store has changed', store.getState());
 });
 
-store.dispatch({
-  type: 'ADD_DRINK',
-  payload: 'water'
-});
+store.dispatch(addDrink('water'));
 
-store.dispatch({
-  type: 'ADD_DRINK',
-  payload: 'kombucha'
-});
+store.dispatch(addDrink('kombucha'));
 
-store.dispatch({
-  type: 'REMOVE_DRINK',
-  payload: 'water'
-});
+store.dispatch(removeDrink('water'));
 
 store.dispatch({
   type: 'ADD_CHIPS',
@@ -92,9 +85,7 @@ store.dispatch({
   payload: 'all-dressed'
 });
 
-store.dispatch({
-  type: 'EMPTY_DRINKS'
-});
+store.dispatch(emptyDrinks());
 
 store.dispatch({
   type: 'EMPTY_CHIPS'
