@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
-import './actions/drinksActions';
 import { ADD_DRINK, addDrink, REMOVE_DRINK, removeDrink, EMPTY_DRINKS, emptyDrinks } from './actions/drinksActions';
-import './actions/chipsActions';
 import { ADD_CHIPS, REMOVE_CHIPS, EMPTY_CHIPS, addChips, removeChips, emptyChips } from './actions/chipsActions';
 
 const initialState = {

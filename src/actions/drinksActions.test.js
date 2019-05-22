@@ -1,4 +1,3 @@
-import './drinksActions';
 import { addDrink, ADD_DRINK, removeDrink, REMOVE_DRINK, emptyDrinks, EMPTY_DRINKS } from './drinksActions';
 
 describe('drinks actions', () => {
