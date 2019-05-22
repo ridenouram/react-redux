@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
 import { createStore } from 'redux';
 
 const initialState = {
@@ -28,7 +27,46 @@ function reducer(state = initialState, action) {
   }
 }
 
+const store = createStore(reducer);
+
+console.log('before any actions: ', store.getState());
+
+store.subscribe(() => {
+  console.log('store has changed');
+});
+
+store.dispatch({
+  type: 'ADD_DRINK',
+  payload: 'water'
+});
+
+store.dispatch({
+  type: 'ADD_CHIPS',
+  payload: 'all-dressed'
+});
+
+store.dispatch({
+  type: 'ADD_SANDWICH',
+  payload: 'bologne'
+});
+
+console.log('all added', store.getState());
+
+store.dispatch({
+  type: 'REMOVE_SANDWICH'
+});
+
+store.dispatch({
+  type: 'REMOVE_CHIPS'
+});
+
+store.dispatch({
+  type: 'REMOVE_DRINK'
+});
+
+console.log('all removed', store.getState());
+
 render(
-  <App />,
+  <p>REDUX</p>,
   document.getElementById('root')
-);
+);  
