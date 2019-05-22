@@ -28,6 +28,12 @@ function reducer(state = initialState, action) {
       return { ...state, chips: remove(state.chips, action.payload) };
     case 'REMOVE_SANDWICH':
       return { ...state, sandwiches: remove(state.sandwiches, action.payload) };
+    case 'EMPTY_DRINKS': 
+      return { ...state, drinks: [] };
+    case 'EMPTY_CHIPS': 
+      return { ...state, chips: [] };
+    case 'EMPTY_SANDWICHES': 
+      return { ...state, sandwiches: [] };
     default:
       return state;
   }
@@ -84,6 +90,18 @@ store.dispatch({
 store.dispatch({
   type: 'REMOVE_CHIPS',
   payload: 'all-dressed'
+});
+
+store.dispatch({
+  type: 'EMPTY_DRINKS'
+});
+
+store.dispatch({
+  type: 'EMPTY_CHIPS'
+});
+
+store.dispatch({
+  type: 'EMPTY_SANDWICHES'
 });
 
 render(
