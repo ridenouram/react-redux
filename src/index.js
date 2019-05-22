@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { ADD_DRINK, addDrink, REMOVE_DRINK, removeDrink, EMPTY_DRINKS, emptyDrinks } from './actions/drinksActions';
 import { ADD_CHIPS, REMOVE_CHIPS, EMPTY_CHIPS, addChips, removeChips, emptyChips } from './actions/chipsActions';
+import { ADD_SANDWICH, REMOVE_SANDWICH, EMPTY_SANDWICHES, addSandwich, removeSandwich, emptySandwiches } from './actions/sandwichActions';
 
 const initialState = {
   drinks: [],
@@ -22,19 +23,19 @@ function reducer(state = initialState, action) {
       return { ...state, drinks: [...state.drinks, action.payload] };
     case ADD_CHIPS:
       return { ...state, chips: [...state.chips, action.payload] };
-    case 'ADD_SANDWICH':
+    case ADD_SANDWICH:
       return { ...state, sandwiches: [...state.sandwiches, action.payload] };
     case REMOVE_DRINK:
       return { ...state, drinks: remove(state.drinks, action.payload) };
     case REMOVE_CHIPS:
       return { ...state, chips: remove(state.chips, action.payload) };
-    case 'REMOVE_SANDWICH':
+    case REMOVE_SANDWICH:
       return { ...state, sandwiches: remove(state.sandwiches, action.payload) };
     case EMPTY_DRINKS: 
       return { ...state, drinks: [] };
     case EMPTY_CHIPS: 
       return { ...state, chips: [] };
-    case 'EMPTY_SANDWICHES': 
+    case EMPTY_SANDWICHES: 
       return { ...state, sandwiches: [] };
     default:
       return state;
@@ -59,20 +60,11 @@ store.dispatch(addChips('all-dressed'));
 
 store.dispatch(addChips('fritos'));
 
-store.dispatch({
-  type: 'ADD_SANDWICH',
-  payload: 'bologne'
-});
+store.dispatch(addSandwich('bologne'));
 
-store.dispatch({
-  type: 'ADD_SANDWICH',
-  payload: 'cheese'
-});
+store.dispatch(addSandwich('cheese'));
 
-store.dispatch({
-  type: 'REMOVE_SANDWICH',
-  payload: 'cheese'
-});
+store.dispatch(removeSandwich('cheese'));
 
 store.dispatch(removeChips('fritos'));
 
@@ -80,9 +72,7 @@ store.dispatch(emptyDrinks());
 
 store.dispatch(emptyChips());
 
-store.dispatch({
-  type: 'EMPTY_SANDWICHES'
-});
+store.dispatch(emptySandwiches());
 
 render(
   <p>REDUX</p>,
