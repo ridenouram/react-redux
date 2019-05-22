@@ -4,24 +4,30 @@ import { createStore } from 'redux';
 
 const initialState = {
   drinks: [],
-  chips: null,
-  sandwich: null
+  chips: [],
+  sandwiches: []
 };
+
+function remove(array, element) {
+  const index = array.indexOf(element);
+  array.splice(index, 1);
+  return array;
+}
 
 function reducer(state = initialState, action) {
   switch(action.type) {
     case 'ADD_DRINK':
       return { ...state, drinks: [...state.drinks, action.payload] };
     case 'ADD_CHIPS':
-      return { ...state, chips: action.payload };
+      return { ...state, chips: [...state.chips, action.payload] };
     case 'ADD_SANDWICH':
-      return { ...state, sandwich: action.payload };
+      return { ...state, sandwiches: [...state.sandwiches, action.payload] };
     case 'REMOVE_DRINK':
-      return { ...state, drink: null };
+      return { ...state, drinks: remove(state.drinks, action.payload) };
     case 'REMOVE_CHIPS':
-      return { ...state, chips: null };
+      return { ...state, chips: remove(state.chips, action.payload) };
     case 'REMOVE_SANDWICH':
-      return { ...state, sandwich: null };
+      return { ...state, sandwiches: remove(state.sandwiches, action.payload) };
     default:
       return state;
   }
@@ -45,32 +51,40 @@ store.dispatch({
   payload: 'kombucha'
 });
 
+store.dispatch({
+  type: 'REMOVE_DRINK',
+  payload: 'water'
+});
 
-// store.dispatch({
-//   type: 'ADD_CHIPS',
-//   payload: 'all-dressed'
-// });
+store.dispatch({
+  type: 'ADD_CHIPS',
+  payload: 'all-dressed'
+});
 
-// store.dispatch({
-//   type: 'ADD_SANDWICH',
-//   payload: 'bologne'
-// });
+store.dispatch({
+  type: 'ADD_CHIPS',
+  payload: 'fritos'
+});
 
-// console.log('all added', store.getState());
+store.dispatch({
+  type: 'ADD_SANDWICH',
+  payload: 'bologne'
+});
 
-// store.dispatch({
-//   type: 'REMOVE_SANDWICH'
-// });
+store.dispatch({
+  type: 'ADD_SANDWICH',
+  payload: 'cheese'
+});
 
-// store.dispatch({
-//   type: 'REMOVE_CHIPS'
-// });
+store.dispatch({
+  type: 'REMOVE_SANDWICH',
+  payload: 'cheese'
+});
 
-// store.dispatch({
-//   type: 'REMOVE_DRINK'
-// });
-
-console.log('all removed', store.getState());
+store.dispatch({
+  type: 'REMOVE_CHIPS',
+  payload: 'all-dressed'
+});
 
 render(
   <p>REDUX</p>,
