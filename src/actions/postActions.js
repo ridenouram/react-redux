@@ -1,5 +1,6 @@
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
+export const UPDATE_POST = 'UPDATE_POST';
 
 export const createPost = (title, body) => ({
   type: CREATE_POST,
@@ -14,4 +15,10 @@ export const deletePost = id => ({
   payload: id
 });
 
-
+export const updatePost = (id, body) => ({
+  type: UPDATE_POST,
+  payload: {
+    id: id,
+    body: body
+  }
+});
