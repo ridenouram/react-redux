@@ -17,5 +17,8 @@ function Posts({ posts, deletePost }) {
 }
 
 Posts.propTypes = {
-  posts = 
-}
+  posts: PropTypes.array.isRequired,
+  deletePost: PropTypes.func.isRequired
+};
+
+export default Posts;
