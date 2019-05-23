@@ -1,6 +1,12 @@
-* create a blog-selectors branch (branch from blog-combine-reducers)
-* create src/selectors/postSelectors.js
-  - get all posts
-  - get a post by index
-* create src/selectors/commentSelectors.js
-  - get all comments by post
+* create a store.js
+  - create an export a redux store
+* create a Post component for lists
+display a posts title
+* create a Posts component
+* create a PostForm component
+* create a CreatePost container
+* create an AllPosts container
+* create an App component
+  - use AllPosts
+  - use CreatePost
+* update index.js to use App wrapped in Provider
