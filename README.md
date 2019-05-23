@@ -1,7 +1,7 @@
 * create a store.js
   - create an export a redux store
 * create a Post component for lists
-display a posts title
+  - display a posts title
 * create a Posts component
 * create a PostForm component
 * create a CreatePost container
