@@ -7,3 +7,4 @@
   - handle create a comment
   - handle delete a comment
   - delete post should also delete all comments
+**refactor with shortid
