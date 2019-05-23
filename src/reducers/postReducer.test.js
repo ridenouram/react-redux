@@ -1,5 +1,5 @@
 import reducer from './postReducer';
-import { createPost } from '../actions/postActions';
+import { createPost, deletePost } from '../actions/postActions';
 
 describe('postReducer', () => {
   it('creates a post', () => {
@@ -14,6 +14,32 @@ describe('postReducer', () => {
         ['id']: {
           title: 'title',
           body: 'body'
+        }
+      }
+    });
+  });
+
+  it('deletes a post', () => {
+    const initialState = {
+      posts: {
+        666: {
+          title: 'post one',
+          body: 'my first post'
+        },
+        777: {
+          title: 'post two',
+          body: 'my second post'
+        }
+      }
+    };
+
+    const newState = reducer(initialState, deletePost(666));
+
+    expect(newState).toEqual({
+      posts: {
+        777: {
+          title: 'post two',
+          body: 'my second post'
         }
       }
     });
