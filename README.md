@@ -1,6 +1,6 @@
-* create a blog-actions branch
-* create src/actions/postActions.js
-* posts have an title and body
-* you can create a post
-* you can delete a post
-BONUS: you can update a post by passing an id and new body
+* create a blog-reducers branch (branch from blog-actions)
+* create src/reducers/postReducer.js
+  - store an array of posts
+  - handle create a post
+  - handle delete a post
+BONUS: handle update a post by index

@@ -2,9 +2,10 @@ import { createPost, CREATE_POST, deletePost, DELETE_POST, updatePost, UPDATE_PO
 
 describe('post actions', () => {
   it('creates a post', () => {
-    expect(createPost('title', 'body')).toEqual({
+    expect(createPost('title', 'body', 'id')).toEqual({
       type: CREATE_POST,
       payload: {
+        id: 'id',
         title: 'title',
         body: 'body'
       }
