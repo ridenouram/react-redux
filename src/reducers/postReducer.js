@@ -5,13 +5,15 @@ const initialState = {
 };
 
 function removeProperty(obj, key) {
-  delete obj[key];
-  return obj;
+  const newObj = { ...obj };
+  delete newObj[key];
+  return newObj;
 }
 
 function addProperty(obj, key, value) {
-  obj[key] = value;
-  return obj;
+  const newObj = { ...obj };
+  newObj[key] = value;
+  return newObj;
 }
 
 export default function reducer(state = initialState, action) {
