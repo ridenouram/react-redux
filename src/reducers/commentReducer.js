@@ -24,7 +24,7 @@ function removeProperty(obj, key) {
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case CREATE_COMMENT:
-      return addProperty(state, action.payload.postId, { [action.payload.commentId]: { body: action.payload.commentBody } });
+      return addProperty(state, action.payload.postId, { ...state[action.payload.postId], [action.payload.commentId]: { body: action.payload.commentBody } });
     case DELETE_COMMENT:
       return removeNestedProperty(state, action.payload.postId, action.payload.commentId);
     case DELETE_POST:
