@@ -18,16 +18,14 @@ store.dispatch(createPost('my title', 'post body', '777'));
 store.dispatch(createComment('666', 'ABC', 'nice post!'));
 store.dispatch(createComment('666', 'EFG', 'nice post!'));
 
-// store.dispatch(deletePost('666'));
+store.dispatch(deletePost('666'));
 
-// store.dispatch(updatePost('777', 'updated body'));
+store.dispatch(updatePost('777', 'updated body'));
 
-// store.dispatch(createComment('777', 'ABC', 'nice post!'));
-// store.dispatch(createComment('777', 'eee', 'nice post!'));
+store.dispatch(createComment('777', 'ABC', 'nice post!'));
+store.dispatch(createComment('777', 'eee', 'nice post!'));
 
-// store.dispatch(deleteComment('777', 'EEE'));
-
-
+store.dispatch(deleteComment('777', 'EEE'));
 
 render(
   <p>REDUX</p>,

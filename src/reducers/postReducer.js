@@ -2,24 +2,22 @@ import { CREATE_POST, DELETE_POST, UPDATE_POST } from '../actions/postActions';
 
 const initialState = {};
 
-function removeProperty(obj, key) {
-  const newObj = { ...obj };
-  delete newObj[key];
-  return newObj;
+function removeProperty(state, key) {
+  const newState = { ...state };
+  delete newState[key];
+  return newState;
 }
 
-function addProperty(obj, key, value) {
-  const newObj = { ...obj };
-  newObj[key] = value;
-  return newObj;
+function addProperty(state, key, value) {
+  const newState = { ...state };
+  newState[key] = value;
+  return newState;
 }
 
-function updatePostBody(obj, key, newBody) {
-  const newObj = { ...obj };
-  let post = newObj[key];
-  post.body = newBody;
-  newObj[key] = post;
-  return newObj;
+function updatePostBody(state, key, newBody) {
+  const newPost = { ...state[key], body: newBody };
+  const newState = { ...state, [key]: newPost };
+  return newState;
 }
 
 export default function reducer(state = initialState, action) {
