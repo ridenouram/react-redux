@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class PostForm extends PureComponent {
   static propTypes = {
-    submitFunc: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
   };
 
   state = {
@@ -19,7 +19,7 @@ export default class PostForm extends PureComponent {
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.submitFunc(this.state.title, this.state.body);
+    this.props.onSubmit(this.state.title, this.state.body);
     this.setState({
       title: '',
       body: ''
